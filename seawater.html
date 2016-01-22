@@ -1,0 +1,150 @@
+<HTML>
+<HEAD>
+<title>SeaWater</title>
+</HEAD> 
+
+<BODY>
+<H1 align="center">The seawater module</H1>
+
+
+<H3>Introduction</H3>
+
+<p>
+The seawater module provides basic functions in Python for physical
+properties of sea water. The scope is similar to the MATLAB toolboxes
+SEAWATER from CSIRO and parts of OCEANS from Woods Hole Institute.
+
+<p>
+Most of the formulas used are taken from Unesco's joint panel on
+oceanographic tables and standards, UNESCO 1981 and UNESCO 1983.
+
+
+
+<H3>User documentation</H3>
+
+<p>
+The functions are mainly polynomials, with an occasional fractional
+exponent. The functions can therefore be used traditionally without
+NumPy to compute a single value. With NumPy the functions act like
+"ufuncs" in the NumPy sence. This means that they can take array
+arguments and return an array of the same shape.
+
+<pre>
+
+ Public functions:
+ Density related
+   dens(S,T,P)           Density of sea water              kg/m**3
+   delta(S,T,P)          Specific volume anomaly           m**3/kg
+   sigma(S,T,P)          Density anomaly                   kg/m**3
+   drhodt(S,T,P)         Temperature derivative of density kg/(K*m**3)
+   alpha(S,T,P)          Thermal expansion coefficient     1/K 
+   drhods(S,T,P)         Salinity derivative of density    kg/m**3
+   beta(S,T,P)           Salinity expansion coefficient
+   
+ Salinity related
+   salt(R,T,P)           Salinity
+   cond(S,T,P)           Conductivity ratio
+
+ Heat related
+   heatcap(S,T,P)        Heat capacity                     J/(kg*K)
+   adtgrad(S,T,P)        Adiabatic lapse rate              K/dbar
+   temppot(S,T,P,Pref)   Potential temperature             &deg;C
+   temppot0(S,T,P)       Potential temperature             &deg;C
+   
+ Miscellaneous
+   freezept(S,P)         Freezing point                    &deg;C
+   soundvel(S,T,P)       Sound velocity                    m/s
+   depth(P,lat)          Depth                             m
+
+ Arguments:
+   S	                 Salinity                 
+   T                     Temperature                       &deg;C
+   P                     Pressure                          dbar 
+   R                     Conductivity ratio
+   Pref                  Reference pressure                dbar
+   lat                   Latitude                          deg
+
+</pre>
+
+
+
+<H3>Test scripts</H3>
+
+In addition to the seawater module, several test scripts are
+available.
+<p>
+The script testwater prints out part of table A3.1 in the book by Gill
+(1982). To recreate the potential temperature values, the alternative
+function temppot0 is used.
+
+<p>
+Also provided are testscripts testdens, testsalt, testheat, and
+testmisc which computes the tables in UNESCO 1983.
+
+
+<H3>Download</H3>
+
+The seawater module is written in pure Python and should work on any
+system. NumPy is not necessary but highly recommended. To install the 
+module, download the file <VAR>seawater.py</VAR> and drop it somewhere
+in Python's search path.
+
+<UL>
+<li><A href="seawater.py">seawater.py</A></li> 
+</UL>
+
+The testscripts are also available.
+<UL>
+<li><A href="testwater.py">testwater.py</A></li> 
+<li><A href="testdens.py">testdens.py</A></li> 
+<li><A href="testsalt.py">testsalt.py</A></li> 
+<li><A href="testheat.py">testheat.py</A></li> 
+<li><A href="testmisc.py">testmisc.py</A></li> 
+
+</UL>
+
+
+
+<H3>References</H3>
+
+
+<DL compact>
+
+<p>
+<dt>Bryden, 1973</dt> 
+<dd>New polynomials for thermal expansion, adiabatic
+   temperature gradient and potential temperature gradient of sea water,
+   Deep-Sea Res. 20, 401-408
+
+
+<p>
+<dt>A. E. Gill, 1982</dt>
+<dd><em>Atmosphere-Ocean Dynamics</em>
+     Academic Press.
+
+<p>
+<dt>UNESCO 1981</dt>
+<dd> Tenth report of the joint panel on
+     oceanographic tables and standards,
+     Unesco technical papers in marine science, 36.
+
+<p>
+<dt>UNESCO 1983</dt>
+<dd> N.P. Fofonoff and R.C. Millard Jr., Algorithms for
+     computation of fundamental properties of seawater, 
+     Unesco technical papers in marine science, 44.
+
+</DL>
+
+
+
+<p>
+<HR>
+<ADDRESS>
+<A HREF = "mailto:bjorn@imr.no">Bjørn Ådlandsvik</A><BR>
+         15 October 2000
+</ADDRESS>
+ 
+ 
+</BODY>
+</HTML>
