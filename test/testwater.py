@@ -1,10 +1,11 @@
 #! /usr/bin/env python
+# -*- coding: utf-8 -*-
 
 # Python test script for most functions in the water module
 #
 # 26 April 2000
 #
-# Bjørn Ådlandsvik (bjorn@imr.no)
+# BjÃ¸rn Ã…dlandsvik (bjorn@imr.no)
 # Institute of Marine Research
 # P.O.Box 1870 Nordnes
 # N-5817 Bergen, NORWAY
@@ -43,29 +44,28 @@ S = 35
 
 P = 0
 for T in [-2, 0, 2, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31]:
-    print format % values(S,T,P)
+    print(format % values(S,T,P))
 
 P = 1000
 for T in [-2, 0, 2, 4, 7, 10, 13, 16, 19]:
-    print format % values(S,T,P)
+    print(format % values(S,T,P))
 
 P = 2000
-for T in [-2, 0, 2, 4, 7]:      
-    print format % values(S,T,P)
+for T in [-2, 0, 2, 4, 7]:
+    print(format % values(S,T,P))
 
 P = 3000
 for T in [-2, 0, 2, 4]:
-    print format % values(S,T,P)
+    print(format % values(S,T,P))
 
 P = 4000
 for T in [-2, 0, 2, 4]:
-    print format % values(S,T,P)
+    print(format % values(S,T,P))
 
 P = 5000
 for T in [-2, 0, 2]:
-    print format % values(S,T,P)
+    print(format % values(S,T,P))
 
 P = 6000
 for T in [-2, 0, 2]:
-    print format % values(S,T,P)        
-
+    print(format % values(S,T,P))

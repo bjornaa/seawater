@@ -1,4 +1,4 @@
-# --- encoding: iso-8859-1 ---
+# --- coding: utf-8 ---
 
 """Seawater heat module
 
@@ -7,7 +7,7 @@ adtgrad(S, T[, P])       -- Adiabatic temperature gradiente
 temppot(S, T, P[, Pref]) -- Potential temperature
 temppot0(S, T, P)        -- Potential temperature, relative to surface
 
-Bjørn Ådlandsvik, <bjorn@imr.no>, 07 November 2004
+BjÃ¸rn Ã…dlandsvik, <bjorn@imr.no>, 07 November 2004
 
 """
 
@@ -20,7 +20,7 @@ def heatcap(S, T, P=0):
 
     Input:
         S = Salinity,     [PSS-78]
-        T = Temperature,  [°C]
+        T = Temperature,  [ï¿½C]
         P = Pressure,     [dbar]
     P is optional, with a default value = zero
 
@@ -30,7 +30,7 @@ def heatcap(S, T, P=0):
     Algorithm: UNESCO 1983
 
     """
-    
+
     P = 0.1*P  # Conversion to bar
 
     # - Temperatur dependence
@@ -52,7 +52,7 @@ def heatcap(S, T, P=0):
           + (a0 + a1*T + a2*T**2)*S \
           + (b0 + b1*T + b2*T**2)*S**1.5
 
-    # - Pressure dependence    
+    # - Pressure dependence
     a0 = -4.9592e-1
     a1 =  1.45747e-2
     a2 = -3.13885e-4
@@ -74,7 +74,7 @@ def heatcap(S, T, P=0):
               + (b0 + b1*T + b2*T**2 + b3*T**3 + b4*T**4)*P**2 \
               + (c0 + c1*T + c2*T**2 + c3*T**3)*P**3
 
-    # - Salinity dependence    
+    # - Salinity dependence
     d0 =  4.9247e-3
     d1 = -1.28315e-4
     d2 =  9.802e-7
@@ -91,7 +91,7 @@ def heatcap(S, T, P=0):
     f3 =  1.8448e-11
 
     g0 =  9.971e-8
- 
+
     h0 =  5.540e-10
     h1 = -1.7682e-11
     h2 =  3.513e-13
@@ -104,7 +104,7 @@ def heatcap(S, T, P=0):
 	   + ((f0 + f1*T + f2*T**2 + f3*T**3)*S  \
 	   +   g0*S3_2)*P**2 \
 	   + ((h0 + h1*T + h2*T**2)*S + j1*T*S3_2)*P**3
-     
+
 
     return CP0 + CP1 + CP2
 
@@ -117,7 +117,7 @@ def adtgrad(S, T, P=0):
 
     Input:
         S = Salinity,     [PSS-78]
-        T = Temperature,  [°C]
+        T = Temperature,  [ï¿½C]
         P = Pressure,     [dbar]
     P is optional, with a default value = zero
 
@@ -127,7 +127,7 @@ def adtgrad(S, T, P=0):
     Algorithm: UNESCO 1983
 
     """
-    
+
     a0 =  3.5803e-5
     a1 = +8.5258e-6
     a2 = -6.836e-8
@@ -163,18 +163,18 @@ def temppot(S, T, P, Pref=0):
 
     Input:
         S = Salinity,                [PSS-78]
-        T = Temperature,             [°C]
+        T = Temperature,             [ï¿½C]
         P = Pressure,                [dbar]
         Pref = Reference pressure,   [dbar]
     Pref is optional, with a default value = zero
 
     Output:
-        Potential temperature,  [°C]
+        Potential temperature,  [ï¿½C]
 
     Algorithm: UNESCO 1983
 
     """
-    
+
     H = Pref-P
     XK = H*adtgrad(S,T,P)
 
@@ -186,14 +186,14 @@ def temppot(S, T, P, Pref=0):
     T = T + 0.29289322*(XK-Q)
     Q = 0.58578644*XK + 0.121320344*Q
     XK = H*adtgrad(S,T,P)
-    
+
     T = T + 1.707106781*(XK-Q)
     Q = 3.414213562*XK - 4.121320344*Q
     P = P + 0.5*H
     XK = H*adtgrad(S,T,P)
-    
-    return T + (XK-2.0*Q)/6.0    
-    
+
+    return T + (XK-2.0*Q)/6.0
+
 
 # ------------------------------------------------------
 
@@ -204,17 +204,17 @@ def temppot0(S,T,P):
 
     Input:
         S = Salinity,                [PSS-78]
-        T = Temperature,             [°C]
+        T = Temperature,             [ï¿½C]
         P = Pressure,                [dbar]
- 
+
     Output:
-        Potential temperature,       [°C]
+        Potential temperature,       [ï¿½C]
 
     Algorithm: Bryden 1973
 
     Note: Due to different algorithms,
         temppot0(S, T, P) != tempot(S, T, P, Pref=0)
-  
+
     """
 
     P = P/10  # Conversion from dbar
@@ -242,6 +242,4 @@ def temppot0(S,T,P):
               - (b0 + b1*T)*P*S0                 \
               - (c0 + (c1 + c2*T)*T)*P*P         \
               + d0*S0*P*P                        \
-              - (e0 + e1*T)*P*P*P                
-
-
+              - (e0 + e1*T)*P*P*P

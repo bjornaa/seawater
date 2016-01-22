@@ -1,8 +1,8 @@
-# --- encoding: iso-8859-1 ---
+# --- coding: utf-8 ---
 
 """
  Seawater -- Python functions for properties of sea water
-    Bjørn Ådlandsvik <bjorn@imr.no>,
+    BjÃ¸rn Ã…dlandsvik <bjorn@imr.no>,
     Institute of Marine Research,
     Version 1.1, 13 November 2002
 
@@ -12,10 +12,10 @@
    delta(S,T,P)          Specific volume anomaly           m**3/kg
    sigma(S,T,P)          Density anomaly                   kg/m**3
    drhodt(S,T,P)         Temperature derivative of density kg/(K*m**3)
-   alpha(S,T,P)          Thermal expansion coefficient     1/K 
+   alpha(S,T,P)          Thermal expansion coefficient     1/K
    drhods(S,T,P)         Salinity derivative of density    kg/m**3
    beta(S,T,P)           Salinity expansion coefficient
-   
+
  Salinity related
    salt(R,T,P)           Salinity
    cond(S,T,P)           Conductivity ratio
@@ -23,18 +23,18 @@
  Heat related
    heatcap(S,T,P)        Heat capacity                     J/(kg*K)
    adtgrad(S,T,P)        Adiabatic lapse rate              K/dbar
-   temppot(S,T,P,Pref)   Potential temperature             °C
-   temppot0(S,T,P)       Potential temperature             °C
-   
+   temppot(S,T,P,Pref)   Potential temperature             ï¿½C
+   temppot0(S,T,P)       Potential temperature             ï¿½C
+
  Miscellaneous
-   freezept(S,P)         Freezing point                    °C
+   freezept(S,P)         Freezing point                    ï¿½C
    soundvel(S,T,P)       Sound velocity                    m/s
    depth(P,lat)          Depth                             m
 
  Arguments:
-   S     = Salinity                 
-   T     = Temperature               °C
-   P     = Pressure                  dbar 
+   S     = Salinity
+   T     = Temperature               ï¿½C
+   P     = Pressure                  dbar
    R     = Conductivity ratio
    Pref  = Reference pressure        dbar
    lat   = Latitude                  deg
@@ -53,12 +53,11 @@
 
 """
 
+from .density import dens, svan, sigma, drhodt, alpha, drhods, beta
+from .salinity import salt, cond
+from .heat import heatcap, adtgrad, temppot, temppot0
+from .misc import freezept, soundvel, depth
+
+
 # --- Exceptions ---
 class OutOfRangeError(Exception): pass
-
-from density import dens, svan, sigma, drhodt, alpha, drhods, beta
-from salinity import salt, cond
-from heat import heatcap, adtgrad, temppot, temppot0
-from misc import freezept, soundvel, depth
-
-

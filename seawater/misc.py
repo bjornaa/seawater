@@ -1,4 +1,4 @@
-# --- encoding: iso-8859-1 ---
+# --- coding: utf-8 ---
 
 """Miscellaneous sea water functions
 
@@ -6,7 +6,7 @@ freezept(S[, P])    -- Freezing point
 soundvel(S, T[, P]) -- Sound velocity
 depth(P, lat)       -- Depth from pressure
 
-Bjørn Ådlandsvik, <bjorn@imr.no>  07 November 2004
+Bjï¿½rn ï¿½dlandsvik, <bjorn@imr.no>  07 November 2004
 
 """
 
@@ -17,19 +17,19 @@ def freezept(S, P=0):
     """Compute freezing temperature of sea water
 
     Usage: freezept(S, [P])
- 
-    Input:               
+
+    Input:
         S = Salinity,      [psu]
         P = Pressure,      [dbar]
     P is optional, with a default value = 0
 
     Output:
-        T = Freezing point,   [°C]
+        T = Freezing point,   [ï¿½C]
 
-    Algorithm: UNESCO 1983 
+    Algorithm: UNESCO 1983
 
     """
-    
+
     a0 = -0.0575
     a1 =  1.710523e-3
     a2 = -2.154996e-4
@@ -47,14 +47,14 @@ def soundvel(S, T, P=0):
 
     Input:
         S = Salinity,     [PSS-78]
-        T = Temperature,  [°C]
+        T = Temperature,  [ï¿½C]
         P = Pressure,     [dbar]
     P is optional, with a default value = zero
 
     Output:
         Sound velocity,  [m/s]
 
-    Algorithm: UNESCO 1983 
+    Algorithm: UNESCO 1983
 
     """
 
@@ -82,14 +82,14 @@ def soundvel(S, T, P=0):
     c30 = -9.7729e-9
     c31 =  3.8504e-10
     c32 = -2.3643e-12
- 
+
     P2 = P*P
     P3 = P2*P
     Cw =  c00 + (c01 + (c02 + (c03 + (c04 + c05*T)*T)*T)*T)*T   \
        + (c10 + (c11 + (c12 + (c13 + c14*T)*T)*T)*T)*P          \
        + (c20 + (c21 + (c22 + (c23 + c24*T)*T)*T)*T)*P2         \
        + (c30 + (c31 + c32*T)*T)*P3
- 
+
     a00 =  1.389
     a01 = -1.262e-2
     a02 =  7.164e-5
@@ -144,16 +144,16 @@ def depth(P, lat):
     Output:
         Depth             [m]
 
-    Algorithm: UNESCO 1983 
+    Algorithm: UNESCO 1983
 
     """
-    
+
     # Use Numeric for trigonometry if present
     try:
         from Numeric import sin, pi
     except:
         from math import sin, pi
-    
+
     a1 =  9.72659
     a2 = -2.2512e-5
     a3 =  2.279e-10
@@ -173,7 +173,3 @@ def depth(P, lat):
     nom = (a1 + (a2 + (a3 + a4*P)*P)*P)*P
 
     return nom / grav
-                                      
-
-
-

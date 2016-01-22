@@ -1,4 +1,4 @@
-# --- encoding: iso-8859-1 ---
+# --- coding: utf-8 ---
 
 """Seawater density module
 
@@ -10,11 +10,12 @@ alpha(S, T[, P])  -- Thermal expansion coefficient
 drhods(S, T[, P]) -- Salinity derivative of density
 beta(S, T[, P])   -- Saline expansion coefficient
 
-Bjørn Ådlandsvik <bjorn@imr.no>, 07 November 2004
+BjÃ¸rn Ã…dlandsvik <bjorn@imr.no>, 07 November 2004
 
 """
 
 # -----------------------------------------------
+
 
 def _dens0(S,T):
     """Density of seawater at zero pressure"""
@@ -46,23 +47,24 @@ def _dens0(S,T):
     # More temperature polynomials
     RB = b0 + (b1 + (b2 + (b3 + b4*T)*T)*T)*T
     RC = c0 + (c1 + c2*T)*T
-    
-    return SMOW + RB*S + RC*(S**1.5) + d0*S*S 
-       
+
+    return SMOW + RB*S + RC*(S**1.5) + d0*S*S
+
 # -----------------------------------------------------------------
+
 
 def _seck(S, T, P=0):
     """Secant bulk modulus"""
-  
+
     # --- Pure water terms ---
 
-    h0 =  3.239908  
+    h0 =  3.239908
     h1 =  1.43713E-3
     h2 =  1.16092E-4
     h3 = -5.77905E-7
     AW = h0 + (h1 + (h2 + h3*T)*T)*T
 
-    k0 =  8.50935E-5  
+    k0 =  8.50935E-5
     k1 = -6.12293E-6
     k2 =  5.2787E-8
     BW = k0 + (k1 + k2*T)*T
@@ -72,7 +74,7 @@ def _seck(S, T, P=0):
     e2 = -2.327105
     e3 =  1.360477E-2
     e4 = -5.155288E-5
-    KW = e0 + (e1 + (e2 + (e3 + e4*T)*T)*T)*T  
+    KW = e0 + (e1 + (e2 + (e3 + e4*T)*T)*T)*T
 
     # --- seawater, P = 0 ---
 
@@ -82,7 +84,7 @@ def _seck(S, T, P=0):
     i1 = -1.0981E-5
     i2 = -1.6078E-6
     j0 =  1.91075E-4
-    A  = AW + (i0 + (i1 + i2*T)*T + j0*SR)*S 
+    A  = AW + (i0 + (i1 + i2*T)*T + j0*SR)*S
 
     f0 = 54.6746
     f1 = -0.603459
@@ -92,35 +94,35 @@ def _seck(S, T, P=0):
     g1 =  1.6483E-2
     g2 = -5.3009E-4
     K0 = KW + (f0 + (f1 + (f2 + f3*T)*T)*T  \
-            + (g0 + (g1 + g2*T)*T)*SR)*S   
+            + (g0 + (g1 + g2*T)*T)*SR)*S
 
     # --- General expression ---
-    
+
     m0 = -9.9348E-7
     m1 =  2.0816E-8
     m2 =  9.1697E-10
-    B = BW + (m0 + (m1 + m2*T)*T)*S  
+    B = BW + (m0 + (m1 + m2*T)*T)*S
 
-    K = K0 + (A + B*P)*P 
+    K = K0 + (A + B*P)*P
 
     return K
- 
+
 # ----------------------------------------------
 
 def dens(S, T, P=0):
     """Compute density of seawater from salinity, temperature, and pressure
 
     Usage: dens(S, T, [P])
- 
-    Input:               
+
+    Input:
         S = Salinity,     [PSS-78]
-        T = Temperature,  [°C]
+        T = Temperature,  [ï¿½C]
         P = Pressure,     [dbar = 10**4 Pa]
     P is optional, with default value zero
 
     Output:
         Density,          [kg/m**3]
- 
+
     Algorithm: UNESCO 1983
 
     """
@@ -137,7 +139,7 @@ def svan(S,T,P=0):
 
     Input:
         S = Salinity,     [PSS-78]
-        T = Temperature,  [°C]
+        T = Temperature,  [ï¿½C]
         P = Pressure,     [dbar]
     P is optional, with a default value = zero
 
@@ -156,7 +158,7 @@ def sigma(S,T,P=0):
 
     Input:
         S = Salinity,     [PSS-78]
-        T = Temperature,  [°C]
+        T = Temperature,  [ï¿½C]
         P = Pressure,     [dbar]
     P is optional, with a default value = zero
 
@@ -170,12 +172,12 @@ def sigma(S,T,P=0):
 
 def drhodt(S,T,P=0):
     """Compute temperature derivative of density
-    
+
     Usage: drhodt(S, T, [P])
 
     Input:
         S = Salinity,     [PSS-78]
-        T = Temperature,  [°C]
+        T = Temperature,  [ï¿½C]
         P = Pressure,     [dbar]
     P is optional, with a default value = zero
 
@@ -193,7 +195,7 @@ def drhodt(S,T,P=0):
     b1 = -4.0899e-3
     b2 =  1.52876e-4
     b3 = -2.47401e-6
-    b4 =  2.155e-8 
+    b4 =  2.155e-8
 
     c1 =  1.0227e-4
     c2 = -3.3092e-6
@@ -206,20 +208,20 @@ def drhodt(S,T,P=0):
     f1 = -0.603459
     f2 =  2.19974e-2
     f3 = -1.8501e-4
-  
+
     g1 =  1.6483e-2
     g2 = -1.06018e-3
 
     h1 =  1.43713e-3
     h2 =  2.32184e-4
     h3 = -1.733715e-6
- 
+
     i1 = -1.0981e-5
     i2 = -3.2156e-6
 
     k1 = -6.12293e-6
     k2 =  1.05574e-7
-  
+
     m1 = 2.0816e-8
     m2 = 1.83394e-9
 
@@ -230,7 +232,7 @@ def drhodt(S,T,P=0):
 
     DAW = h1 + (h2 + h3*T)
     DA  = DAW + (i1 + i2*T)*S
-     
+
 
     DBW = k1 + k2*T
     DB  = DBW + (m1 + m2*T)*S
@@ -240,7 +242,7 @@ def drhodt(S,T,P=0):
     DK  = DK0 + (DA + DB*P)*P
 
     K    = _seck(S,T,P)
-    RHO0 = _dens0(S,T) 
+    RHO0 = _dens0(S,T)
     denom  = 1. - P/K
     return (DRHO0 * denom - RHO0 * P * DK / (K*K)) / (denom*denom)
 
@@ -253,7 +255,7 @@ def alpha(S,T,P=0):
 
     Input:
         S = Salinity,     [PSS-78]
-        T = Temperature,  [°C]
+        T = Temperature,  [ï¿½C]
         P = Pressure,     [dbar]
     P is optional, with a default value = zero
 
@@ -261,7 +263,7 @@ def alpha(S,T,P=0):
         Thermal expansion coefficient,  [1/K]
 
     """
-    
+
     ALPHA = - drhodt(S,T,P) / dens(S,T,P)
     return ALPHA
 
@@ -269,12 +271,12 @@ def alpha(S,T,P=0):
 
 def drhods(S,T,P=0):
     """Compute salinity derivative of density
-    
+
     Usage: drhodt(S, T, [P])
 
     Input:
         S = Salinity,     [PSS-78]
-        T = Temperature,  [°C]
+        T = Temperature,  [ï¿½C]
         P = Pressure,     [dbar]
     P is optional, with a default value = zero
 
@@ -282,7 +284,7 @@ def drhods(S,T,P=0):
         Salinity derivative of density [kg/m**3]
 
     """
-    
+
     b0 =  8.24493e-1
     b1 = -4.0899e-3
     b2 =  7.6438e-5
@@ -338,7 +340,7 @@ def beta(S,T,P=0):
 
     Input:
         S = Salinity,     [PSS-78]
-        T = Temperature,  [°C]
+        T = Temperature,  [ï¿½C]
         P = Pressure,     [dbar]
     P is optional, with a default value = zero
 
@@ -354,21 +356,21 @@ def beta(S,T,P=0):
 ### SALINITY FUNCTIONS #################################
 
 ## def _sal(XR,XT):
-    
+
 ##     a0 =  0.0080
 ##     a1 = -0.1692
 ##     a2 = 25.3851
 ##     a3 = 14.0941
 ##     a4 = -7.0261
 ##     a5 =  2.7081
-    
+
 ##     b0 =  0.0005
 ##     b1 = -0.0056
 ##     b2 = -0.0066
 ##     b3 = -0.0375
 ##     b4 =  0.0636
 ##     b5 = -0.0144
-    
+
 ##     k  =  0.0162
 
 ##     DS = (XT / (1+k*XT) ) *        \
@@ -379,7 +381,7 @@ def beta(S,T,P=0):
 ## # ---------------------------------------------------
 
 ## def _dsal(XR,XT):
-    
+
 ##     a1 = -0.1692
 ##     a2 = 25.3851
 ##     a3 = 14.0941
@@ -393,48 +395,47 @@ def beta(S,T,P=0):
 ##     b5 = -0.0144
 
 ##     k  =  0.0162
-    
+
 ##     dDS = (XT / (1+k*XT) ) *      \
 ##           (b1 + (b2*2 + (b3*3 + (b4*4 + b5*5*XR)*XR)*XR)*XR)
-    
+
 ##     return a1 + (a2*2 + (a3*3 + (a4*4 + a5*5*XR)*XR)*XR)*XR + dDS
 
 ## # ---------------------------------------------
 
 ## def _rt(T):
-    
+
 ##     c0 =  0.6766097
 ##     c1 =  2.00564e-2
 ##     c2 =  1.104259e-4
 ##     c3 = -6.9698e-7
 ##     c4 =  1.0031e-9
-    
+
 ##     return c0 + (c1 + (c2 + (c3 + c4*T)*T)*T)*T
 
 ## # ---------------------------------------------------
 
 ## def _c(P):
-    
+
 ##     e1 =  2.070e-5
 ##     e2 = -6.370e-10
 ##     e3 =  3.989e-15
-    
+
 ##     return (e1 + (e2 + e3*P)*P)*P
 
 ## # ---------------------------------------------------
 
 ## def _b(T):
-    
+
 ##     d1 =  3.426e-2
 ##     d2 =  4.464e-4
-    
+
 ##     return 1.0 + (d1 + d2*T)*T
 
 ## # ---------------------------------------------------
 
 ## def _a(T):
-    
-##     d3 =  4.215e-1
-##     d4 = -3.107e-3    
-##     return d3 + d4*T
 
+##     d3 =  4.215e-1
+##     d4 = -3.107e-3
+##     return d3 + d4*T
