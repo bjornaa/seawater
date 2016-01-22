@@ -21,7 +21,7 @@
 # Unesco technical papers in marine science 44.
 
 from seawater import depth, freezept, soundvel
-from Numeric import array, arange
+from numpy import array, arange
 
 deg = chr(176)  # degree symbol in iso-latin1 encoding
 
@@ -31,6 +31,8 @@ def printdepth():
     LAT = array([0., 30., 45., 60., 90.])
     P   = arange(0, 10001, 1000)
     P[0] = 500
+
+    print(depth(100, LAT))
 
     print()
     print("                TABLE OF DEPTH (METERS)")
@@ -82,7 +84,7 @@ def printsoundvel():
 # ------------------------------------------------------
 
 printdepth()
-input("press any key to continue:")
+input("Press any key to continue:")
 printfreezept()
-input("press any key to continue:")
+input("Press any key to continue:")
 printsoundvel()

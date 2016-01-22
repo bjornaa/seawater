@@ -6,7 +6,7 @@ freezept(S[, P])    -- Freezing point
 soundvel(S, T[, P]) -- Sound velocity
 depth(P, lat)       -- Depth from pressure
 
-Bj�rn �dlandsvik, <bjorn@imr.no>  07 November 2004
+Bjørn Ådlandsvik, <bjorn@imr.no>  07 November 2004
 
 """
 
@@ -148,11 +148,8 @@ def depth(P, lat):
 
     """
 
-    # Use Numeric for trigonometry if present
-    try:
-        from Numeric import sin, pi
-    except:
-        from math import sin, pi
+    # Use numpy for trigonometry if present
+    from numpy import sin, pi
 
     a1 =  9.72659
     a2 = -2.2512e-5

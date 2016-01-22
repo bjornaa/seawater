@@ -20,7 +20,7 @@
 # Unesco technical papers in marine science 44.
 
 from seawater import salt, cond
-from Numeric import array, arange
+from numpy import array, arange
 
 # Declare arrays
 

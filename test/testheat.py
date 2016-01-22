@@ -20,7 +20,7 @@
 # Algorithms for computation of fundamental properties of seawater,
 # Unesco technical papers in marine science 44.
 
-from Numeric import array, arange
+from numpy import array, arange
 from seawater import heatcap, adtgrad, temppot
 
 T = 10.0*arange(5)

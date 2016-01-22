@@ -22,7 +22,7 @@
 # Unesco technical papers in marine science 44.
 
 from seawater import dens, svan, sigma
-from Numeric import array, arange
+from numpy import array, arange
 
 # Declare argument arrays
 S = array([0., 30., 35., 40.])
