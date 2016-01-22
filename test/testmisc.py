@@ -20,13 +20,13 @@
 # Algorithms for computation of fundamental properties of seawater,
 # Unesco technical papers in marine science 44.
 
+from __future__ import print_function, unicode_literals
+
 from seawater import depth, freezept, soundvel
 from numpy import array, arange
 
-deg = chr(176)  # degree symbol in iso-latin1 encoding
 
 # ---------------------------------------------------
-
 def printdepth():
     LAT = array([0., 30., 45., 60., 90.])
     P   = arange(0, 10001, 1000)
@@ -45,14 +45,14 @@ def printdepth():
     for p in P:
         print("%6.0f" % p, 5*entry % tuple(depth(p, LAT)))
 
-# -----------------------------------------------
 
+# -----------------------------------------------
 def printfreezept():
     S = arange(5, 41, 5)
     P = arange(0, 501, 100)
 
     print()
-    print("          FREEZING POINT TEMPERATURE " + deg + "C")
+    print("          FREEZING POINT TEMPERATURE " + "°C")
     print()
     print("                   SALINITY PSS-78")
     print()
@@ -62,8 +62,8 @@ def printfreezept():
     for p in P:
         print("%9.0f" % p, 8*entry % tuple(freezept(S, p)))
 
-# -----------------------------------------------
 
+# -----------------------------------------------
 def printsoundvel():
     T = 10.0*arange(5)
     P = 1000.0*arange(11)
@@ -72,7 +72,7 @@ def printsoundvel():
     print()
     print("                               SOUND SPEED IN SEAWATER U [m/s]")
     print("PRESSURE                     TEMPERATURE", end=' ')
-    print(deg+"C  IPTS-68                 SALINTY:", "%2.0f" % S[0])
+    print("°C  IPTS-68                 SALINTY:", "%2.0f" % S[0])
     print("DECIBARS %8d %11d %11d %11d %11d" % tuple(T))
     for p in P:
         print("%6.0f" % p, 5*entry % tuple(soundvel(S[0],T,p)))
@@ -84,7 +84,5 @@ def printsoundvel():
 # ------------------------------------------------------
 
 printdepth()
-input("Press any key to continue:")
 printfreezept()
-input("Press any key to continue:")
 printsoundvel()

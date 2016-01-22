@@ -19,6 +19,8 @@
 # Algorithms for computation of fundamental properties of seawater,
 # Unesco technical papers in marine science 44.
 
+from __future__ import print_function, unicode_literals
+
 from seawater import salt, cond
 from numpy import array, arange
 
@@ -29,10 +31,10 @@ T = 10.0*arange(5)
 P = 1000.0*arange(11)
 S = array([25., 30., 35., 40.])
 
-deg = chr(176)  # degree symbol in iso-latin1 encoding
+deg = "\u00B0"  # degree symbol
+
 
 # -----------------------------------------------------
-
 def printsalt():
     entry = "     %7.4f"
     print() # empty line
@@ -55,12 +57,10 @@ def printsalt():
 
 
 # ---------------------------------------------------------
-
 # Conductiviy table p. 14
-
 def printcond():
     entry = "    %8.6f"
-    print() #
+    print()
     print("                              CONDUCTIVITY RATIO  R")
     print("PRESSURE                     TEMPERATURE", end=' ')
     print(deg +"C  IPTS-68                SALINITY:", end=' ')
@@ -78,5 +78,4 @@ def printcond():
 # ------------------------------------------------------------
 
 printsalt()
-input("press any key to continue:")
 printcond()

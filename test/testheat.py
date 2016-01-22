@@ -20,6 +20,8 @@
 # Algorithms for computation of fundamental properties of seawater,
 # Unesco technical papers in marine science 44.
 
+from __future__ import print_function, unicode_literals
+
 from numpy import array, arange
 from seawater import heatcap, adtgrad, temppot
 
@@ -27,7 +29,7 @@ T = 10.0*arange(5)
 P = 1000.0*arange(11)
 S = array([0., 30., 35., 40.])
 
-deg = chr(176)  # degree symbol in iso-latin1 encoding
+deg = "\u00B0"  # degree symbol
 
 # ------------------------------------------------------
 
@@ -86,7 +88,5 @@ def printtemppot():
 # --------------------------------------------------------
 
 printheatcap()
-input("press a key to continue:")
 printadtgrad()
-input("press a key to continue:")
 printtemppot()

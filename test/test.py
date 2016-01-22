@@ -15,6 +15,8 @@ Bjørn Ådlandsvik, <bjorn@imr.no>, 07 November 2004
 
 """
 
+from __future__ import print_function
+
 from seawater import *
 
 format1 = "Computed: %25s = "
