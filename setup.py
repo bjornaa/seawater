@@ -12,7 +12,7 @@ from distutils.core import setup
 setup(name         = 'seawater',
       version      = '1.1',
       description  = 'Functions for physical properties of sea water',
-      author       = 'Bj�rn �dlandsvik',
+      author       = 'Bjørn Ådlandsvik',
       author_email = 'bjorn@imr.no',
       url          = 'http://www.imr.no/~bjorn/python/seawater/',
       packages     = ['seawater']
