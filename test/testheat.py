@@ -25,64 +25,67 @@ from __future__ import print_function, unicode_literals
 from numpy import array, arange
 from seawater import heatcap, adtgrad, temppot
 
-T = 10.0*arange(5)
-P = 1000.0*arange(11)
-S = array([0., 30., 35., 40.])
+T = 10.0 * arange(5)
+P = 1000.0 * arange(11)
+S = array([0.0, 30.0, 35.0, 40.0])
 
-deg = "\u00B0"  # degree symbol
+deg = "\u00b0"  # degree symbol
 
 # ------------------------------------------------------
 
+
 def printheatcap():
-    S = array([0., 30., 35., 40.])
+    S = array([0.0, 30.0, 35.0, 40.0])
     entry = "      %6.1f"
     print()
     print("                     SPECIFIC HEAT SEAWATER Cp [ J/(Kg K) ]")
-    print("PRESSURE                     TEMPERATURE", end=' ')
-    print(deg+"C  IPTS-68                 SALINTY:", "%2.0f" % S[0])
+    print("PRESSURE                     TEMPERATURE", end=" ")
+    print(deg + "C  IPTS-68                 SALINTY:", "%2.0f" % S[0])
     print("DECIBARS %8d %11d %11d %11d %11d" % tuple(T))
     for p in P:
-        print("%6.0f" % p, 5*entry % tuple(heatcap(S[0],T,p)))
+        print("%6.0f" % p, 5 * entry % tuple(heatcap(S[0], T, p)))
     for s in S[1:]:
-        print(68*"-" + "SALINTIY:", "%2.0f" % s)
+        print(68 * "-" + "SALINTIY:", "%2.0f" % s)
         for p in P:
-            print("%6.0f" % p, 5*entry % tuple(heatcap(s,T,p)))
+            print("%6.0f" % p, 5 * entry % tuple(heatcap(s, T, p)))
+
 
 # -----------------------------------------------------
+
 
 def printadtgrad():
-    S = array([25., 30., 35., 40.])
+    S = array([25.0, 30.0, 35.0, 40.0])
     entry = "      %6.4f"
     print()
-    print("                     ADIABATIC LAPSE RATE  [" \
-          + deg + "C/1000 Decibars]")
-    print("PRESSURE                     TEMPERATURE", end=' ')
-    print(deg+"C  IPTS-68                 SALINTY:", "%2.0f" % S[0])
+    print("                     ADIABATIC LAPSE RATE  [" + deg + "C/1000 Decibars]")
+    print("PRESSURE                     TEMPERATURE", end=" ")
+    print(deg + "C  IPTS-68                 SALINTY:", "%2.0f" % S[0])
     print("DECIBARS %8d %11d %11d %11d %11d" % tuple(T))
     for p in P:
-        print("%6.0f" % p, 5*entry % tuple(1000*adtgrad(S[0],T,p)))
+        print("%6.0f" % p, 5 * entry % tuple(1000 * adtgrad(S[0], T, p)))
     for s in S[1:]:
-        print(68*"-" + "SALINTIY:", "%2.0f" % s)
+        print(68 * "-" + "SALINTIY:", "%2.0f" % s)
         for p in P:
-            print("%6.0f" % p, 5*entry % tuple(1000*adtgrad(s,T,p)))
+            print("%6.0f" % p, 5 * entry % tuple(1000 * adtgrad(s, T, p)))
+
 
 # -----------------------------------------------------
 
+
 def printtemppot():
-    S = array([25., 30., 35., 40.])
+    S = array([25.0, 30.0, 35.0, 40.0])
     entry = "     %7.4f"
     print()
-    print("        POTENTIAL TEMPERATURE " + deg + \
-          "C (Ref. Pres. = 0.0)")
-    print("PRESSURE                     TEMPERATURE", end=' ')
-    print(deg+"C  IPTS-68                 SALINTY:", "%2.0f" % S[0])
+    print("        POTENTIAL TEMPERATURE " + deg + "C (Ref. Pres. = 0.0)")
+    print("PRESSURE                     TEMPERATURE", end=" ")
+    print(deg + "C  IPTS-68                 SALINTY:", "%2.0f" % S[0])
     print("DECIBARS %8d %11d %11d %11d %11d" % tuple(T))
     for p in P:
-        print("%6.0f" % p, 5*entry % tuple(temppot(S[0],T,p)))
+        print("%6.0f" % p, 5 * entry % tuple(temppot(S[0], T, p)))
     for s in S[1:]:
-        print(68*"-" + "SALINTIY:", "%2.0f" % s)
+        print(68 * "-" + "SALINTIY:", "%2.0f" % s)
         for p in P:
-            print("%6.0f" % p, 5*entry % tuple(temppot(s,T,p)))
+            print("%6.0f" % p, 5 * entry % tuple(temppot(s, T, p)))
 
 
 # --------------------------------------------------------

@@ -28,8 +28,8 @@ from numpy import array, arange
 
 # ---------------------------------------------------
 def printdepth():
-    LAT = array([0., 30., 45., 60., 90.])
-    P   = arange(0, 10001, 1000)
+    LAT = array([0.0, 30.0, 45.0, 60.0, 90.0])
+    P = arange(0, 10001, 1000)
     P[0] = 500
 
     print(depth(100, LAT))
@@ -39,11 +39,11 @@ def printdepth():
     print()
     print("                   LATITUDE (DEGREES)")
     print("PRESSURE")
-    print("DECIBARS", ("%7.0f" + 4*"%11.0f") % tuple(LAT))
+    print("DECIBARS", ("%7.0f" + 4 * "%11.0f") % tuple(LAT))
     print()
     entry = "    %7.2f"
     for p in P:
-        print("%6.0f" % p, 5*entry % tuple(depth(p, LAT)))
+        print("%6.0f" % p, 5 * entry % tuple(depth(p, LAT)))
 
 
 # -----------------------------------------------
@@ -56,30 +56,31 @@ def printfreezept():
     print()
     print("                   SALINITY PSS-78")
     print()
-    print("PRESSURE", 8*"%8.0f" % tuple(S))
+    print("PRESSURE", 8 * "%8.0f" % tuple(S))
     print("DECIBARS")
-    entry =  "  %6.3f"
+    entry = "  %6.3f"
     for p in P:
-        print("%9.0f" % p, 8*entry % tuple(freezept(S, p)))
+        print("%9.0f" % p, 8 * entry % tuple(freezept(S, p)))
 
 
 # -----------------------------------------------
 def printsoundvel():
-    T = 10.0*arange(5)
-    P = 1000.0*arange(11)
-    S = array([25., 30., 35., 40.])
+    T = 10.0 * arange(5)
+    P = 1000.0 * arange(11)
+    S = array([25.0, 30.0, 35.0, 40.0])
     entry = "      %6.1f"
     print()
     print("                               SOUND SPEED IN SEAWATER U [m/s]")
-    print("PRESSURE                     TEMPERATURE", end=' ')
+    print("PRESSURE                     TEMPERATURE", end=" ")
     print("°C  IPTS-68                 SALINTY:", "%2.0f" % S[0])
     print("DECIBARS %8d %11d %11d %11d %11d" % tuple(T))
     for p in P:
-        print("%6.0f" % p, 5*entry % tuple(soundvel(S[0],T,p)))
+        print("%6.0f" % p, 5 * entry % tuple(soundvel(S[0], T, p)))
     for s in S[1:]:
-        print(68*"-" + "SALINTIY:", "%2.0f" % s)
+        print(68 * "-" + "SALINTIY:", "%2.0f" % s)
         for p in P:
-            print("%6.0f" % p, 5*entry % tuple(soundvel(s,T,p)))
+            print("%6.0f" % p, 5 * entry % tuple(soundvel(s, T, p)))
+
 
 # ------------------------------------------------------
 

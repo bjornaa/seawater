@@ -27,11 +27,11 @@ from seawater import dens, svan, sigma
 from numpy import array, arange
 
 # Declare argument arrays
-S = array([0., 30., 35., 40.])
-T = 10.0*arange(5)
-P = 1000.0*arange(11)
+S = array([0.0, 30.0, 35.0, 40.0])
+T = 10.0 * arange(5)
+P = 1000.0 * arange(11)
 
-deg = "\u00B0" # degree symbol
+deg = "\u00b0"  # degree symbol
 
 
 # ----------------------------------------------------------
@@ -40,46 +40,51 @@ def printsvan():
     print()  # empty line
     print("                SPECIFIC VOLUME ANOMALY DELTA [1.0e-8 M**3/KG]")
     print("PRESSURE                     TEMPERATURE")
-    print(deg+"C  IPTS-68                 SALINTY:", "%2.0f" % S[0])
+    print(deg + "C  IPTS-68                 SALINTY:", "%2.0f" % S[0])
     print("DECIBARS %8d %11d %11d %11d %11d" % tuple(T))
     for p in P:
-        print("%6.0f" % p, 5*entry % tuple(1.0e8*svan(S[0],T,p)))
+        print("%6.0f" % p, 5 * entry % tuple(1.0e8 * svan(S[0], T, p)))
     for s in S[1:]:
-        print(68*"-" + "SALINTIY:" + "%2.0f" % s)
+        print(68 * "-" + "SALINTIY:" + "%2.0f" % s)
         for p in P:
-            print("%6.0f" % p + 5*entry % tuple(1.0e8*svan(s,T,p)))
+            print("%6.0f" % p + 5 * entry % tuple(1.0e8 * svan(s, T, p)))
+
 
 # ------------------------------------------------------
+
 
 def printsigma():
     entry = "     %7.4f"
     print()
     print("                          DENSITY ANOMALY SIGMA [KG/M**3]")
     print("PRESSURE                     TEMPERATURE")
-    print(deg+"C  IPTS-68                 SALINTY:", "%2.0f" % S[0])
+    print(deg + "C  IPTS-68                 SALINTY:", "%2.0f" % S[0])
     print("DECIBARS %8d %11d %11d %11d %11d" % tuple(T))
     for p in P:
-        print("%6.0f" % p, 5*entry % tuple(sigma(S[0],T,p)))
+        print("%6.0f" % p, 5 * entry % tuple(sigma(S[0], T, p)))
     for s in S[1:]:
-        print(68*"-" + "SALINTIY:", "%2.0f" % s)
+        print(68 * "-" + "SALINTIY:", "%2.0f" % s)
         for p in P:
-            print("%6.0f" % p, 5*entry % tuple(sigma(s,T,p)))
+            print("%6.0f" % p, 5 * entry % tuple(sigma(s, T, p)))
+
 
 # --------------------------------------------------------
 
+
 def printvol():
     entry = "   %9.7f"
-    print() # empty line
+    print()  # empty line
     print("                         SPECIFIC VOLUME V [1e-3 M**3/KG]")
     print("PRESSURE                     TEMPERATURE")
-    print(deg+"C  IPTS-68                 SALINTY:", "%2.0f" % S[0])
+    print(deg + "C  IPTS-68                 SALINTY:", "%2.0f" % S[0])
     print("DECIBARS %8d %11d %11d %11d %11d" % tuple(T))
     for p in P:
-        print("%6.0f" % p, 5*entry % tuple(1e3 / dens(S[0],T,p)))
+        print("%6.0f" % p, 5 * entry % tuple(1e3 / dens(S[0], T, p)))
     for s in S[1:]:
-        print(68*"-" + "SALINTIY:", "%2.0f" % s)
+        print(68 * "-" + "SALINTIY:", "%2.0f" % s)
         for p in P:
-            print("%6.0f" % p, 5*entry % tuple(1e3 / dens(s,T,p)))
+            print("%6.0f" % p, 5 * entry % tuple(1e3 / dens(s, T, p)))
+
 
 #################################################
 

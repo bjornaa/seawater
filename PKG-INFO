@@ -1,9 +1,9 @@
 Metadata-Version: 1.0
 Name: seawater
-Version: 1.1
+Version: 1.3
 Summary: Functions for physical properties of sea water
-Home-page: http://www.imr.no/~bjorn/python/seawater/
-Author: Bjørn Ådlandsvik
+Home-page: https://github.com/bjornaa/seawater.git
+Author: BjÃ¸rn Ã…dlandsvik
 Author-email: bjorn@imr.no
 License: UNKNOWN
 Description: UNKNOWN

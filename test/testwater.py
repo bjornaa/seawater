@@ -31,41 +31,51 @@
 
 from seawater import dens, drhods, alpha, heatcap, temppot0, soundvel
 
-def values(S,T,P):
-    '''Compute a row in the table'''
-    return (P/10, S, T, dens(S,T,P)-1000,
-            drhods(S,T,P), 10**7*alpha(S,T,P),  heatcap(S,T,P),
-            1000*temppot0(S,T,P), soundvel(S,T,P) )
+
+def values(S, T, P):
+    """Compute a row in the table"""
+    return (
+        P / 10,
+        S,
+        T,
+        dens(S, T, P) - 1000,
+        drhods(S, T, P),
+        10**7 * alpha(S, T, P),
+        heatcap(S, T, P),
+        1000 * temppot0(S, T, P),
+        soundvel(S, T, P),
+    )
+
 
 # Output format for the rows
-format = '%4.0f %4.0f %4.0f %7.3f %6.3f %6.0f %6.0f %6.0f %8.1f'
+format = "%4.0f %4.0f %4.0f %7.3f %6.3f %6.0f %6.0f %6.0f %8.1f"
 
 S = 35
 
 P = 0
 for T in [-2, 0, 2, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31]:
-    print(format % values(S,T,P))
+    print(format % values(S, T, P))
 
 P = 1000
 for T in [-2, 0, 2, 4, 7, 10, 13, 16, 19]:
-    print(format % values(S,T,P))
+    print(format % values(S, T, P))
 
 P = 2000
 for T in [-2, 0, 2, 4, 7]:
-    print(format % values(S,T,P))
+    print(format % values(S, T, P))
 
 P = 3000
 for T in [-2, 0, 2, 4]:
-    print(format % values(S,T,P))
+    print(format % values(S, T, P))
 
 P = 4000
 for T in [-2, 0, 2, 4]:
-    print(format % values(S,T,P))
+    print(format % values(S, T, P))
 
 P = 5000
 for T in [-2, 0, 2]:
-    print(format % values(S,T,P))
+    print(format % values(S, T, P))
 
 P = 6000
 for T in [-2, 0, 2]:
-    print(format % values(S,T,P))
+    print(format % values(S, T, P))

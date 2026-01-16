@@ -11,7 +11,7 @@ SEAWATER from CSIRO and parts of OCEANS from Woods Hole Institute.
 Most of the formulas used are taken from Unesco's joint panel on
 oceanographic tables and standards, UNESCO 1981 and UNESCO 1983.
 
-The present version is 1.2, released 22 January 2015
+The present version is 1.3, released 17 January 2026
 This is an minor update from version 1.1 from 2004.
 It is now compatible with python 3 and 2.7.
 
@@ -115,3 +115,4 @@ Author
   Institute of Marine Research
   Version 1.1 November 2004
   Version 1.2 January 2015
+  Version 1.3 January 2026
